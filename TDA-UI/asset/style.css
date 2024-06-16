@@ -1,0 +1,181 @@
+nav {
+    height: 100px;
+    background-color: #537db4;
+  }
+  nav > div {
+    color: #ffffff;
+    line-height: 100px;
+    padding-left: 31px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .login-card {
+    width: 35%;
+  }
+  .login-card > h1 {
+    color: #24436c;
+    font-size: 52px;
+  }
+  .form-group > label {
+    color: #24436c;
+    font-size: 18px;
+    margin-top: 21px;
+    margin-bottom: 14px;
+    padding-left: 25px;
+  }
+  .form-group > input {
+    width: 100%;
+    font-size: 18px;
+    padding: 16px 34px;
+    border: 1px solid #000000;
+    outline: none;
+    border-radius: 50px;
+  }
+  .confirm {
+    display: flex;
+    justify-content: center;
+  }
+  .confirm > input {
+    margin-top: 21px;
+    width: 50%;
+    background-color: #537db4;
+    border-color: #24436c;
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  nav a {
+    border: 1px solid #707070;
+    padding: 12px 24px;
+    margin-left: 56px;
+    background-color: #e3edfc;
+    text-decoration: none;
+    color: #24436c;
+    border-radius: 18px;
+  }
+  .title {
+    font-size: 45px;
+    font-weight: bold;
+    color: #24436c;
+  }
+  .table-bar select {
+    width: 120px;
+    height: 35px;
+    border: 2px solid #24436c;
+    color: #24436c;
+    border-radius: 10px;
+    padding: 0px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 30px;
+  }
+  .table-bar option {
+    font-size: 20px;
+  }
+  .table-bar div {
+    width: 220px;
+    height: 35px;
+    border: 1px solid #24436c;
+    border-radius: 42px;
+    padding-top: 4px;
+    padding-left: 10px;
+    margin-right: 30px;
+  }
+  .table-bar input {
+    width: 80%;
+    border: none;
+    outline: none;
+  }
+  .table-bar button {
+    width: 120px;
+    color: #ffffff;
+    border-radius: 42px;
+    background-color: #537db4;
+    outline: none;
+    border: 1px solid #537db4;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    color: #ffffff;
+  }
+  th {
+    padding: 7px 11px;
+    background-color: #2e95e5;
+  }
+  td {
+    padding: 7px 11px;
+  }
+  tr:nth-child(odd) {
+    background-color: #e0ecf6;
+  }
+  tr:nth-child(even) {
+    background-color: #93bede;
+  }
+  .upload-title h2 {
+    color: #24436c;
+    font-size: 24px;
+    margin-right: 30px;
+  }
+  .upload-title select {
+    width: 150px;
+    height: 35px;
+    border: 1px solid #24436c;
+    color: #24436c;
+    border-radius: 42px;
+    padding: 0px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 30px;
+    text-align: center;
+  }
+  input[type="file"]::file-selector-button {
+    padding: 7px 34px;
+    border: 2px solid #24436c;
+    background-color: #e0ecf6;
+  }
+  .uploadBtn {
+    border: 1px solid #707070;
+    padding: 12px 61px;
+    margin-left: 100px;
+    background-color: #24436C;
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 57px;
+    font-size: 20px;
+  }
+  .disableBtn{
+      color: #ffffff79;
+      background-color: #707070;
+  }
+  #addRowBtn {
+    width: 180px;
+    height: 45px;
+    background-color: #2e95e5;
+    border: 1px solid #24436c;
+    border-radius: 20px;
+    font-size: 20px;
+    color: #ffffff;
+  }
+  .back-link {
+    color: #24436c;
+  }
+  .back-link {
+    color: #24436c;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+  }
+  .custom-card {
+    width: 70%;
+    border-color: #537db4;
+    background-color: #e0ecf6;
+  }
+  .custom-card input,
+  .custom-card textarea {
+    outline: none;
+    border: 1px solid #537db4;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+  
