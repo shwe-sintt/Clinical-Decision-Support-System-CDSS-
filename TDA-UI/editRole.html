@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./asset/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script src="./asset/app.js"></script>
+  </head>
+  <body>
+    <nav class="d-flex justify-content-between">
+      <div>Team-Care Deprescribing Application</div>
+      <div class="me-5">
+        <a href="./view.html">View Table</a>
+        <a href="./uploadCSV.html">Upload CSV</a>
+        <a href="./users.html">Users</a>
+      </div>
+    </nav>
+    <div class="container">
+      <h3 class="my-5 title">Edit Row</h3>
+      <div class="card ms-2 custom-card py-3 px-5">
+        <div class="row my-2">
+          <label class="col-5">Drug ID:</label>
+          <input class="col-7" id="drug_id" type="text" />
+        </div>
+        <div class="row my-2">
+          <label class="col-5">Drug:</label>
+          <input class="col-7" id="drug" type="text" />
+        </div>
+        <div class="row my-2">
+          <label class="col-5">Drug Class:</label>
+          <input class="col-7" id="drug_class" type="text" />
+        </div>
+        <div class="row my-2">
+          <label class="col-5">Crcl:</label>
+          <input class="col-7" id="crcl" type="text" />
+        </div>
+        <div class="row my-2">
+          <label class="col-5">Recommendation:</label>
+          <div class="col-7 p-0">
+            <textarea id="recom" class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="row my-2">
+          <label class="col-5">Strength Recommendation:</label>
+          <div class="col-7 p-0">
+            <textarea id="strrecom" class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="row my-2">
+          <label class="col-5">Rationale:</label>
+          <input class="col-7" id="qulevd" type="text" />
+        </div>
+        <div class="row my-2">
+          <label class="col-5">Strength Recommendation:</label>
+          <input class="col-7" id="strrecom" type="text" />
+        </div>
+        <div class="row my-2">
+          <label class="col-5"></label>
+          <button id="addRowBtn">Add Row</button>
+        </div>
+      </div>
+      <a class="back" href="./view.html"> &lt; &lt; Back to View Table</a>
+    </div>
+  </body>
+</html>
