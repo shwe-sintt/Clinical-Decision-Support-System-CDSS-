@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./asset/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script src="./asset/app.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div>Patient Management System</div>
+      <div>
+        <a href="./view.html">Patients</a>
+      </div>
+      <div>
+        <a href="./report.html">Reports</a>
+      </div>
+      <div>
+        <a href="./reviews.html">Reviews</a>
+      </div>
+      <div class="dropdown">
+        <a href="#" class="dropbtn">Administration</a>
+        <div class="dropdown-content">
+          <a href="./addPatient.html">Patient</a
+          ><a href="./medicationClassView.html">Medication Class</a>
+          <a href="./medicationView.html">Medication</a>
+          <a href="./medicalConditionView.html">Medical Condition</a>
+          <a href="./medicalStaffView.html">Medical Staff</a>
+        </div>
+      </div>
+      <div class="dropdown user-dropdown">
+        <i class="fa-solid fa-user fa-2x dropbtn"></i>
+        <div class="dropdown-content user-dropdown-content">
+          <a href="#">Admin</a>
+          <a href="./index.html">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h3 class="my-5 title">Patient Detail</h3>
+      <div class="card ms-2 custom-card py-3 px-5">
+        <div class="text-danger" id="error"></div>
+        <div class="row my-3">
+          <label class="col-4">Patient ID:</label>
+          <input class="col-8" readonly id="patientId" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">NRIC:</label>
+          <input class="col-8" readonly id="nric" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">First Name:</label>
+          <input class="col-8" readonly id="first_name" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Last Name:</label>
+          <input class="col-8" readonly id="last_name" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Gender:</label>
+          <input class="col-8" readonly id="gender" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Birth Date:</label>
+          <input class="col-8" readonly id="birth_date" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Admission Date:</label>
+          <input class="col-8" readonly id="admission_date" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Discharge Date:</label>
+          <input class="col-8" readonly id="discharge_date" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Bed:</label>
+          <input class="col-8" readonly id="bed" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Ward:</label>
+          <input class="col-8" readonly id="ward" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4"></label>
+          <div class="col-8 d-flex justify-content-around">
+            <button id="reportBtn" class="form-btn">Report</button>
+            <button id="reviewBtn" class="form-btn">Review</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-5">
+      <h4 class="my-3">Medications</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Dosage</th>
+            <th>Dosage Unit</th>
+            <th>Frequency</th>
+            <th>Start Date</th>
+            <th>Duration</th>
+            <th>End Date</th>
+            <th>Prescribed By</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="table_tmedication"></tbody>
+      </table>
+      <a class="add my-3" id="add_to_medication">Add</a>
+    </div>
+
+    <div class="container my-5">
+      <h4 class="my-3">Medical Condition</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Condition</th>
+            <th>Severity</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Remarks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="table_condition"></tbody>
+      </table>
+      <a id="add_to_medical_condition" class="add my-3">Add</a>
+    </div>
+
+    <div class="container my-5">
+      <h4 class="my-3">Medical Allergies</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Medication</th>
+            <th>Discover Date</th>
+            <th>Remarks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="table_allergy"></tbody>
+      </table>
+      <a class="add my-3" id="add_to_allergy">Add</a>
+      <button
+        class="btn btn-secondary d-block my-3"
+        onclick="location.replace('./view.html')"
+      >
+        Back
+      </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      let link = location.href.split("=");
+      let id = link[link.length - 1];
+      let patientId = document.querySelector("#patientId");
+      let nric = document.querySelector("#nric");
+      let first_name = document.querySelector("#first_name");
+      let last_name = document.querySelector("#last_name");
+      let gender = document.querySelector("#gender");
+      let birth_date = document.querySelector("#birth_date");
+      let admission_date = document.querySelector("#admission_date");
+      let discharge_date = document.querySelector("#discharge_date");
+      let bed = document.querySelector("#bed");
+      let ward = document.querySelector("#ward");
+
+      const formatDateShow = (dateStr) => {
+        if (!dateStr) return "";
+        const date = new Date(dateStr);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}/${month}/${day}`;
+      };
+      const formatDate = (dateStr) => {
+        if (!dateStr) return "";
+        const date = new Date(dateStr);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      };
+      //patient detail
+      fetch("http://localhost:8001/api/patient/getDataById/" + id)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          (patientId.value = data.patient_id_str),
+            (nric.value = data.NRIC || ""),
+            (first_name.value = data.first_name),
+            (last_name.value = data.last_name),
+            (gender.value = data.gender),
+            (birth_date.value = formatDate(data.birth_date)),
+            (admission_date.value = formatDate(data.admission_date)),
+            (discharge_date.value = formatDate(data.discharge_date)),
+            (bed.value = data.bed),
+            (ward.value = data.ward);
+        });
+
+      //patient condition
+      fetch("http://localhost:8001/api/patientCondition/getAllData")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          fetch(
+            "http://localhost:8001/api/medicationCondition/getDataById/" + id
+          )
+            .then((response) => {
+              return response.json();
+            })
+            .then((innerData) => {
+              var tcondition = "";
+              data.map((d) => {
+                tcondition += `
+                <tr>
+                  <td>${innerData.condition || "-"}</td>
+                  <td>${d.severity || "-"}</td>
+                  <td>${formatDateShow(d.start_date) || "-"}</td>
+                  <td>${formatDateShow(d.end_date) || "-"}</td>
+                  <td>${d.remarks || "-"}</td>
+                  <td>
+                    <a href="./editmedicalConditionView.html">Edit</a>
+                    <br />
+                    <a class="bg-secondary">Delete</a>
+                  </td>
+                </tr>
+                `;
+              });
+              document.querySelector("#table_condition").innerHTML = tcondition;
+            });
+        });
+
+      //patient medicine
+      fetch("http://localhost:8001/api/patientMedication/getAllData")
+        .then((response) => {
+          return response.json();
+        })
+        .then(async (data) => {
+          let medication = await fetch(
+            "http://localhost:8001/api/medication/getDataById/" + id
+          )
+            .then((d) => {
+              return d.json();
+            })
+            .then((med) => {
+              return med;
+            });
+          let stuff = await fetch(
+            "http://localhost:8001/api/medicalStaff/getDataById/" + id
+          )
+            .then((d) => {
+              return d.json();
+            })
+            .then((med) => {
+              return med;
+            });
+          var tmedication = "";
+          data.map((d) => {
+            tmedication += `
+              <tr>
+                <td>${medication.generic_name || "-"}</td>
+                <td>${medication.dosage || "-"}</td>
+                <td>${medication.dosage_unit || "-"}</td>
+                <td>${medication.frequency || "-"}</td>
+                <td>${data.start_date || "-"}</td>
+                <td>${data.duration || "-"}</td>
+                <td>${data.end_date || "-"}</td>
+                <td>${stuff.role}</td>
+                <td>
+                  <a href="./editMedication.html">Edit</a>
+                  <br />
+                  <a class="bg-secondary">Delete</a>
+                </td>
+              </tr>
+              `;
+          });
+          document.querySelector("#table_tmedication").innerHTML = tmedication;
+        });
+
+      //patient allergy
+      fetch("http://localhost:8001/api/patientAllergy/getAllData")
+        .then((response) => {
+          return response.json();
+        })
+        .then(async (data) => {
+          let medication = await fetch(
+            "http://localhost:8001/api/medication/getDataById/" + id
+          )
+            .then((d) => {
+              return d.json();
+            })
+            .then((med) => {
+              return med;
+            });
+
+          var tallergy = "";
+          data.map((d) => {
+            tallergy += `
+              <tr>
+                <td>${medication.generic_name || "-"}</td>
+                <td>${d.discover_date || "-"}</td>
+                <td>${d.remarks || "-"}</td>
+                <td>
+                  <a href="./editmedicalConditionView.html">Edit</a>
+                  <br />
+                  <a class="bg-secondary">Delete</a>
+                </td>
+              </tr>
+              `;
+          });
+          document.querySelector("#table_allergy").innerHTML = tallergy;
+        });
+
+      //add buttons and review and report
+      document.getElementById("reviewBtn").onclick = () => {
+        location.replace("./patientDetailAddReview.html?id=" + id);
+      };
+      document.getElementById("reportBtn").onclick = () => {
+        location.replace("./patientReport.html?id="+id)
+      };
+      document.getElementById("add_to_medical_condition").onclick = () => {
+        location.replace("./pacientDetailaddMedicationCondition.html?id=" + id);
+      };
+      document.getElementById("add_to_medication").onclick = () => {
+        location.replace("./pacientDetailaddMedication.html?id=" + id);
+      };
+      document.getElementById("add_to_allergy").onclick = () => {
+        location.replace("./pacientDetailaddAllergy.html?id=" + id);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./asset/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script src="./asset/app.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div>Patient Management System</div>
+      <div>
+        <a href="./view.html">Patients</a>
+      </div>
+      <div>
+        <a href="./report.html">Reports</a>
+      </div>
+      <div>
+        <a href="./reviews.html">Reviews</a>
+      </div>
+      <div class="dropdown">
+        <a href="#" class="dropbtn">Administration</a>
+        <div class="dropdown-content">
+          <a href="./addPatient.html">Patient</a>
+          <a href="./medicationClassView.html">Medication Class</a>
+          <a href="./medicationView.html">Medication</a>
+          <a href="./medicalConditionView.html">Medical Condition</a>
+          <a href="./medicalStaffView.html">Medical Staff</a>
+        </div>
+      </div>
+      <div class="dropdown user-dropdown">
+        <i class="fa-solid fa-user fa-2x dropbtn"></i>
+        <div class="dropdown-content user-dropdown-content">
+          <a href="#">Admin</a>
+          <a href="./index.html">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h3 class="my-5 title">Add Medical Class</h3>
+      <div class="card ms-2 custom-card py-3 px-5">
+        <div class="text-danger" id="error"></div>
+        <div class="row my-3">
+          <label class="col-4">Class ID:</label>
+          <input class="col-8" id="class_id" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Class Name:</label>
+          <input class="col-8" id="class_name" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Indication:</label>
+          <input class="col-8" id="indication" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4"></label>
+          <div class="col-8 d-flex justify-content-around">
+            <button id="submit" class="form-btn">Submit</button>
+            <button
+              class="form-btn"
+              onclick="location.replace('./medicationClassView.html')"
+            >
+              Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      let class_id = document.querySelector("#class_id");
+      let class_name = document.querySelector("#class_name");
+      let indication = document.querySelector("#indication");
+      let submit = document.querySelector("#submit");
+
+      submit.addEventListener("click", addCondition);
+
+      function addCondition() {
+        fetch("http://localhost:8001/api/medicationClass/getAllData")
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            let res = data.filter((d) => d.class_id_str == class_id.value);
+            if (res.length < 1) {
+              fetch("http://localhost:8001/api/medicationClass/addData", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  classId: class_id.value,
+                  class_name: class_name.value,
+                  indication: indication.value,
+                }),
+              })
+                .then((response) => {
+                  return response.json();
+                })
+                .then((data) => {
+                  location.replace("./medicationClassView.html");
+                })
+                .catch((err) => {
+                  document.querySelector("#error").innerHTML =
+                    "Invalid add new row!";
+                });
+            } else {
+              document.querySelector("#error").innerHTML =
+                "This Class ID already exists!";
+              setTimeout(
+                () => (document.querySelector("#error").innerHTML = ""),
+                1000
+              );
+            }
+          });
+      }
+    </script>
+  </body>
+</html>
