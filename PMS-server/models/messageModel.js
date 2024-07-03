@@ -22,10 +22,20 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW
+        },
+        deleted_by: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        deleted_at: {
+            type: DataTypes.DATE,
+            allowNull: true
         }
     }, {
         createdAt: 'created_at',
-        updatedAt: 'last_modifed'    // Change the name of updatedAt to endDate
+        updatedAt: 'last_modifed',
+        deletedAt: 'deleted_at',
+        paranoid: true
     });
 
     return Message;

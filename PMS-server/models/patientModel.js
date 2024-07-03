@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             allowNull: false
         },
+        patient_id_str: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         NRIC: {
             type: DataTypes.STRING,
             allowNull: false
@@ -41,9 +45,20 @@ module.exports = (sequelize, DataTypes) => {
         bed: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        deleted_by: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        deleted_at: {
+            type: DataTypes.DATE,
+            allowNull: true
         }
     }, {
-        timestamps: false // Disable createdAt and updatedAt
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+        deletedAt: 'deleted_at',
+        paranoid: true
     });
 
     return Patient;

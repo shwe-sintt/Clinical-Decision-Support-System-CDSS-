@@ -10,11 +10,21 @@ module.exports = (sequelize, DataTypes) => {
         review_status: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        deleted_by: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        deleted_at: {
+            type: DataTypes.DATE,
+            allowNull: true
         }
     },
     {
         createdAt: 'review_start_date',
-        updatedAt: 'review_end_date'
+        updatedAt: 'review_end_date',
+        deletedAt: 'deleted_at',
+        paranoid: true
     });
    
     return Review
