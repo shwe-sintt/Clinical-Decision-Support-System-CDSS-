@@ -53,12 +53,7 @@
     </nav>
 
     <div class="container">
-      <h1 class="my-5 title">
-        List of Patients
-        <button class="add-new" onclick="location.replace('./addPatient.html')">
-          +Add New
-        </button>
-      </h1>
+      <h1 class="my-5 title">List of Patient Reviews</h1>
 
       <table>
         <thead>
@@ -75,7 +70,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody id="table_body">
+        <tbody>
           <tr>
             <td>2024_0001</td>
             <td>S12345678A</td>
@@ -86,56 +81,83 @@
             <td></td>
             <td>W01</td>
             <td>B01</td>
-            <td>
-              <a href="./editPatient.html">Edit</a>
-              <br />
-              <a href="./detailPatient.html">Details</a>
-            </td>
+            <td><a>Edit</a><br /><a href="./patientDetailReviews.html">Details</a></td>
+          </tr>
+          <tr>
+            <td>2024_0002</td>
+            <td>S23456789B</td>
+            <td>Jane</td>
+            <td>Lim</td>
+            <td>01/02/1951</td>
+            <td>01/01/2024</td>
+            <td></td>
+            <td>W02</td>
+            <td>B02</td>
+            <td><a>Edit</a><br /><a>Details</a></td>
+          </tr>
+          <tr>
+            <td>2024_0003</td>
+            <td>S34567890C</td>
+            <td>Mary</td>
+            <td>Lam</td>
+            <td>01/03/1952</td>
+            <td>01/02/2024</td>
+            <td></td>
+            <td>W03</td>
+            <td>B03</td>
+            <td><a>Edit</a><br /><a>Details</a></td>
+          </tr>
+          <tr>
+            <td>2024_0004</td>
+            <td>S45678901D</td>
+            <td>Bryan</td>
+            <td>Lee</td>
+            <td>01/04/1953</td>
+            <td>01/03/2024</td>
+            <td></td>
+            <td>W04</td>
+            <td>B04</td>
+            <td><a>Edit</a><br /><a>Details</a></td>
+          </tr>
+          <tr>
+            <td>2024_0005</td>
+            <td>S56789012E</td>
+            <td>Chloe</td>
+            <td>Ong</td>
+            <td>01/05/1954</td>
+            <td>01/04/2024</td>
+            <td></td>
+            <td>W05</td>
+            <td>B05</td>
+            <td><a>Edit</a><br /><a>Details</a></td>
+          </tr>
+          <tr>
+            <td>2024_0005</td>
+            <td>S67890123F</td>
+            <td>Rachel</td>
+            <td>Tan</td>
+            <td>01/06/1955</td>
+            <td>01/05/2024</td>
+            <td></td>
+            <td>W06</td>
+            <td>B06</td>
+            <td><a>Edit</a><br /><a>Details</a></td>
+          </tr>
+          <tr>
+            <td>2024_0006</td>
+            <td>S78901234G</td>
+            <td>Ryan</td>
+            <td>Goh</td>
+            <td>01/07/1956</td>
+            <td>01/06/2024</td>
+            <td></td>
+            <td>W07</td>
+            <td>B07</td>
+            <td><a>Edit</a><br /><a>Details</a></td>
           </tr>
         </tbody>
       </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      fetch("http://localhost:8001/api/patient/getAllData")
-        .then((response) => response.json())
-        .then((data) => {
-          var tstr = "";
-          data.map((d) => {
-            const formatDate = (dateStr) => {
-              if (!dateStr) return "";
-              const date = new Date(dateStr);
-              const year = date.getFullYear();
-              const month = String(date.getMonth() + 1).padStart(2, "0");
-              const day = String(date.getDate()).padStart(2, "0");
-              return `${year}/${month}/${day}`;
-            };
-
-            tstr += `
-              <tr>
-                <td>${d.patient_id_str || ""}</td>
-                <td>${d.NRIC || ""}</td>
-                <td>${d.first_name || ""}</td>
-                <td>${d.last_name || ""}</td>
-                <td>${formatDate(d.birth_date)}</td>
-                <td>${formatDate(d.admission_date)}</td>
-                <td>${formatDate(d.discharge_date)}</td>
-                <td>${d.ward || ""}</td>
-                <td>${d.bed || ""}</td>
-                <td>
-                  <a href="./editPatient.html?id=${
-                    d.patient_id || ""
-                  }">Edit</a>
-                  <br />
-                  <a href="./detailPatient.html?id=${
-                    d.patient_id || ""
-                  }">Details</a>
-                </td>
-              </tr>
-            `;
-          });
-          document.querySelector("#table_body").innerHTML = tstr;
-        });
-    </script>
   </body>
 </html>

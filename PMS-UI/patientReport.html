@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./asset/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script src="./asset/app.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div>Patient Management System</div>
+      <div>
+        <a href="./view.html">Patients</a>
+      </div>
+      <div>
+        <a href="./report.html">Reports</a>
+      </div>
+      <div>
+        <a href="./reviews.html">Reviews</a>
+      </div>
+      <div class="dropdown">
+        <a href="#" class="dropbtn">Administration</a>
+        <div class="dropdown-content">
+          <a href="./addPatient.html">Patient</a
+          ><a href="./medicationClassView.html">Medication Class</a>
+          <a href="./medicationView.html">Medication</a>
+          <a href="./medicalConditionView.html">Medical Condition</a>
+          <a href="./medicalStaffView.html">Medical Staff</a>
+        </div>
+      </div>
+      <div class="dropdown user-dropdown">
+        <i class="fa-solid fa-user fa-2x dropbtn"></i>
+        <div class="dropdown-content user-dropdown-content">
+          <a href="#">Admin</a>
+          <a href="./index.html">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h3 class="my-5 title">Add Patient Report</h3>
+      <div class="card ms-2 custom-card py-3 px-5">
+        <div class="row my-3">
+          <label class="col-4">Patient ID:</label>
+          <input class="col-8" readonly id="patient_id_str" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Report Date:</label>
+          <input class="col-8" id="report_date" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Weight:</label>
+          <input class="col-8" id="weight" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Height:</label>
+          <input class="col-8" id="height" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Systolic Blood Preassure:</label>
+          <input class="col-8" id="systolic_blood_preassure" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Diastolic Blood Preassure:</label>
+          <input class="col-8" id="diastolic_blood_preassure" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Renal Function:</label>
+          <input class="col-8" id="renal_function" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Potassium Level:</label>
+          <input class="col-8" id="potassium_level" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Sodium Level:</label>
+          <input class="col-8" id="sodium_level" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Calcium Level:</label>
+          <input class="col-8" id="calcium_level" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Blood Glucose:</label>
+          <input class="col-8" id="blood_glucose" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Tube Feeding Status:</label>
+          <input class="col-8" id="tube_feeding_status" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Estimated Prognosis<br />< 1 Year:</label>
+          <input class="col-8" id="estimated_progonosis" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Mobility CAT Status:</label>
+          <input class="col-8" id="mobility_cat_status" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">End Stage Disease:</label>
+          <input class="col-8" id="end_stage_disease" type="text" />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Patient Condition:</label>
+          <input class="col-8" id="patien_condition" type="text" />
+          <div class="col-4"></div>
+          <div class="text-danger col-8" id="error"></div>
+        </div>
+        <div class="row my-3">
+          <label class="col-4"
+            >Severe Function/<br />Cognitive Disability:</label
+          >
+          <input
+            class="col-8"
+            id="server_function_congitive_desability"
+            type="text"
+          />
+        </div>
+        <div class="row my-3">
+          <label class="col-4">Goals Towards<br />Symptoms Control:</label>
+          <input class="col-8" id="goal_towards" type="text" />
+        </div>
+        <!-- <div class="row my-3">
+          <label class="col-4">Entered By:</label>
+          <input class="col-8" id="entered_by" type="text" />
+        </div> -->
+        <div class="row my-2">
+          <label class="col-4"></label>
+          <div class="col-8 d-flex justify-content-around">
+            <button id="submit" class="form-btn">Submit</button>
+            <button class="form-btn" id="back">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      let link = location.href.split("=");
+      let id = link[link.length - 1];
+      let patient_id_str = document.querySelector("#patient_id_str");
+      let report_date = document.querySelector("#report_date");
+      let weight = document.querySelector("#weight");
+      let height = document.querySelector("#height");
+      let systolic_blood_preassure = document.querySelector(
+        "#systolic_blood_preassure"
+      );
+      let diastolic_blood_preassure = document.querySelector(
+        "#diastolic_blood_preassure"
+      );
+      let renal_function = document.querySelector("#renal_function");
+      let potassium_level = document.querySelector("#potassium_level");
+      let sodium_level = document.querySelector("#sodium_level");
+      let calcium_level = document.querySelector("#calcium_level");
+      let blood_glucose = document.querySelector("#blood_glucose");
+      let tube_feeding_status = document.querySelector("#tube_feeding_status");
+      let estimated_prognosis = document.querySelector("#estimated_progonosis");
+      let mobility_cat_status = document.querySelector("#mobility_cat_status");
+      let end_stage_disease = document.querySelector("#end_stage_disease");
+      let patient_condition = document.querySelector("#patien_condition");
+      let severe_function_cognitive_disability = document.querySelector(
+        "#server_function_congitive_desability"
+      );
+      let goals_towards_symptoms_control =
+        document.querySelector("#goal_towards");
+      let submit = document.querySelector("#submit");
+      let saved = true;
+      //let entered_by = document.querySelector("#entered_by");
+      fetch("http://localhost:8001/api/patient/getDataById/" + id)
+        .then((response) => {
+          return response.json();
+        })
+        .then((res) => {
+          patient_id_str.value = res.patient_id_str;
+        });
+
+      document.getElementById("back").onclick = () => {
+        location.replace("./detailPatient.html?id=" + id);
+      };
+
+      const addReport = async () => {
+        await fetch("http://localhost:8001/api/patientCondition/getAllData")
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            data.map((d) => {
+              fetch(
+                "http://localhost:8001/api/medicationCondition/getDataById/" +
+                  d.condition_id
+              )
+                .then((response) => {
+                  return response.json();
+                })
+                .then((data2) => {
+                  if (
+                    data2.condition_id_str == patient_condition.value ||
+                    data2.condition == patient_condition.value
+                  ) {
+                    if (saved) {
+                      addFunction(d.patient_condition_id);
+                      saved = false;
+                    }
+                  } else {
+                    document.querySelector("#error").innerHTML =
+                      "Medical Condition does not exists!";
+                    setTimeout(
+                      () => (document.querySelector("#error").innerHTML = ""),
+                      1000
+                    );
+                  }
+                });
+            });
+            const addFunction = (patient_condition_id) => {
+              fetch("http://localhost:8001/api/report/addData", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  report_date: report_date.value,
+                  weigth: weight.value,
+                  height: height.value,
+                  blood_pressure_systolic: systolic_blood_preassure.value,
+                  blood_pressure_diastolic: diastolic_blood_preassure.value,
+                  renal_function: renal_function.value,
+                  potassium_level: potassium_level.value,
+                  sodium_level: sodium_level.value,
+                  calcium_level: calcium_level.value,
+                  blood_glucose: blood_glucose.value,
+                  tube_feeding_status: tube_feeding_status.value,
+                  estimated_prognosisLT1Y: estimated_progonosis.value,
+                  eng_stage_disease: end_stage_disease.value,
+                  severe_funtional_or_cognitive_disability:
+                    severe_function_cognitive_disability.value,
+                  goals_towards_symptoms_control:
+                    goals_towards_symptoms_control.value,
+                  mobility_cat_status: mobility_cat_status.value,
+                  patient_id: id,
+                  patient_condition_id: patient_condition_id,
+                  entered_by: staff,
+                }),
+              })
+                .then((response) => {
+                  return response.json();
+                })
+                .then((data) => {
+                  location.replace("./report.html");
+                });
+            };
+          });
+      };
+
+      submit.addEventListener("click", addReport);
+    </script>
+  </body>
+</html>

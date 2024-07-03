@@ -54,39 +54,34 @@
     </nav>
 
     <div class="container">
-      <h3 class="my-5 title">Add Medication</h3>
+      <h3 class="my-5 title">Add Patient Condition</h3>
       <div class="card ms-2 custom-card py-3 px-5">
         <div class="text-danger" id="error"></div>
         <div class="row my-3">
-          <label class="col-4">Generic Name:</label>
-          <input class="col-8" id="generic_name" type="text" />
+          <label class="col-4">Condition:</label>
+          <input class="col-8" id="condition" type="text" />
         </div>
         <div class="row my-3">
-          <label class="col-4">Dosage:</label>
-          <input class="col-8" id="dosage" type="text" />
+          <label class="col-4">Severity:</label>
+          <input class="col-8" id="severity" type="text" />
         </div>
         <div class="row my-3">
-          <label class="col-4">Dosage Unit:</label>
-          <input class="col-8" id="dosage_unit" type="text" />
+          <label class="col-4">Start Date:</label>
+          <input class="col-8" id="start_date" type="text" />
         </div>
         <div class="row my-3">
-          <label class="col-4">Frequency:</label>
-          <input class="col-8" id="frequency" type="text" />
+          <label class="col-4">End Date:</label>
+          <input class="col-8" id="end_date" type="text" />
         </div>
         <div class="row my-3">
-          <label class="col-4">Medication Class:</label>
-          <input class="col-8" id="medication_class" type="text" />
+          <label class="col-4">Remarks:</label>
+          <input class="col-8" id="remarks" type="text" />
         </div>
         <div class="row my-3">
           <label class="col-4"></label>
           <div class="col-8 d-flex justify-content-around">
             <button id="submit" class="form-btn">Submit</button>
-            <button
-              class="form-btn"
-              onclick="location.replace('./medicationView.html')"
-            >
-              Back
-            </button>
+            <button id="back" class="form-btn">Back</button>
           </div>
         </div>
       </div>
@@ -94,45 +89,49 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      let generic_name = document.querySelector("#generic_name");
-      let dosage = document.querySelector("#dosage");
-      let dosage_unit = document.querySelector("#dosage_unit");
-      let frequency = document.querySelector("#frequency");
-      let medication_class = document.querySelector("#medication_class");
+      let link = location.href.split("=");
+      let id = link[link.length - 1];
 
       let submit = document.querySelector("#submit");
+
+      let condition = document.querySelector("#condition");
+      let severity = document.querySelector("#severity");
+      let start_date = document.querySelector("#start_date");
+      let end_date = document.querySelector("#end_date");
+      let remarks = document.querySelector("#remarks");
 
       submit.addEventListener("click", addCondition);
 
       function addCondition() {
-        fetch("http://localhost:8001/api/medicationClass/getAllData")
+        fetch("http://localhost:8001/api/medicationCondition/getAllData")
           .then((response) => {
             return response.json();
           })
           .then((data) => {
             let res = data.filter(
-              (d) => d.class_id_str == medication_class.value
+              (d) => d.condition_id_str == condition.value
             );
             //|| d.class_name == medication_class.value
             if (res.length > 0) {
-              fetch("http://localhost:8001/api/medication/addData", {
+              fetch("http://localhost:8001/api/patientCondition/addData", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                  generic_name: generic_name.value,
-                  dosage: dosage.value,
-                  dosage_unit: dosage_unit.value,
-                  frequency: frequency.value,
-                  class_id: res[0].class_id,
+                  severity: severity.value,
+                  remarks: remarks.value,
+                  patient_id: id,
+                  condition_id: res[0].condition_id,
+                  start_date: start_date.value,
+                  end_date: end_date.value,
                 }),
               })
                 .then((response) => {
                   return response.json();
                 })
                 .then((data) => {
-                  location.replace("./medicationView.html");
+                  location.replace("./detailPatient.html?id=" + id);
                 })
                 .catch((err) => {
                   document.querySelector("#error").innerHTML =
@@ -140,7 +139,7 @@
                 });
             } else {
               document.querySelector("#error").innerHTML =
-                "Class ID does not exists!";
+                "Medical Condition does not exists!";
               setTimeout(
                 () => (document.querySelector("#error").innerHTML = ""),
                 1000
@@ -148,6 +147,9 @@
             }
           });
       }
+      document.getElementById("back").onclick = () => {
+        location.replace("./detailPatient.html?id=" + id);
+      };
     </script>
   </body>
 </html>

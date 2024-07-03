@@ -1,177 +1,198 @@
 .login-card {
-    width: 35%;
-  }
-  .login-card > h1 {
-    color: #24436c;
-    font-size: 52px;
-  }
-  .form-group > label {
-    color: #24436c;
-    font-size: 18px;
-    margin-top: 21px;
-    margin-bottom: 14px;
-    padding-left: 25px;
-  }
-  .form-group > input {
-    width: 100%;
-    font-size: 18px;
-    padding: 16px 34px;
-    border: 1px solid #000000;
-    outline: none;
-    border-radius: 50px;
-  }
-  .confirm {
-    display: flex;
-    justify-content: center;
-  }
-  .confirm > input {
-    margin-top: 21px;
-    width: 50%;
-    background-color: #537db4;
-    border-color: #24436c;
-    font-size: 26px;
-    font-weight: bold;
-    color: #ffffff;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    height: 100px;
-    background-color: #537db4;
-    justify-content: space-between;
-  }
-  
-  nav > div {
-    color: #1d1c1c;
-    line-height: 100px;
-    padding-left: 31px;
-    font-size: 22px;
-    font-weight: bold;
-  }
-  
-  nav a {
-    text-decoration: none;
-    color: #f3f5f8;
-    line-height: 76px;
-    font-size: 22px;
-    font-weight: bold;
-  }
-  .user-dropdown {
-    margin-left: auto;
-    margin-top: 30px;
-  }
-  nav i {
-    margin-right: 50px;
-    color: #f3f5f8;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    min-width: 200px;
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: #5f5d5d;
-    text-decoration: none;
-    display: block;
-    line-height: 30px;
-    padding: 5px;
-    font-weight: 400;
-    width: 100%;
-    border: 1px solid #5f5d5d;
-  }
-  
-  .show {
-    display: block;
-  }
-  
-  .user-dropdown-content {
-    margin-top: -15px;
-    margin-left: -130px;
-  }
-  
-  .title {
-    color: #24436c;
-  }
-  
-  .add-new {
-    width: 140px;
-    color: #ffffff;
-    border-radius: 42px;
-    background-color: #537db4;
-    outline: none;
-    border: 1px solid #537db4;
-    font-size: 20px;
-    margin-left: 20px;
-    padding: 5px 5px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  table a {
-    background-color: #b0d0de;
-    color: white;
-    border: none;
-    padding: 2px 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  .scrollable-x {
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  /* .scrollable-x::-webkit-scrollbar {
-    display: none;
-  } */
-  .title {
-    font-size: 45px;
-    font-weight: bold;
-    color: #24436c;
-  }
-  .custom-card {
-    width: 70%;
-    border-color: #537db4;
-    background-color: #e0ecf6;
-  }
-  .custom-card input,
-  .custom-card textarea {
-    outline: none;
-    border: 1px solid #1e2c3e;
-    border-radius: 20px;
-    padding: 5px 10px;
-  }
-  .custom-card label{
-    font-size: 24px;
-    color: #24436c;
-    font-weight: bold;
-  }
-  .form-btn{
-    width: 40%;
-    border: 1px solid #537db4;
-    border-radius: 50px;
-    background-color: #71bcdf;
-    font-size: 23px;
-    color: #f2f2f2;
-  }
+  width: 35%;
+}
+.login-card > h1 {
+  color: #24436c;
+  font-size: 52px;
+}
+.form-group > label {
+  color: #24436c;
+  font-size: 18px;
+  margin-top: 21px;
+  margin-bottom: 14px;
+  padding-left: 25px;
+}
+.form-group > input {
+  width: 100%;
+  font-size: 18px;
+  padding: 16px 34px;
+  border: 1px solid #000000;
+  outline: none;
+  border-radius: 50px;
+}
+.confirm {
+  display: flex;
+  justify-content: center;
+}
+.confirm > input {
+  margin-top: 21px;
+  width: 50%;
+  background-color: #537db4;
+  border-color: #24436c;
+  font-size: 26px;
+  font-weight: bold;
+  color: #ffffff;
+}
+nav {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  background-color: #537db4;
+  justify-content: space-between;
+}
+
+nav > div {
+  color: #1d1c1c;
+  line-height: 100px;
+  padding-left: 31px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f3f5f8;
+  line-height: 76px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.user-dropdown {
+  margin-left: auto;
+  margin-top: 30px;
+}
+nav i {
+  margin-right: 50px;
+  color: #f3f5f8;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 200px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #5f5d5d;
+  text-decoration: none;
+  display: block;
+  line-height: 30px;
+  padding: 5px;
+  font-weight: 400;
+  width: 100%;
+  border: 1px solid #5f5d5d;
+}
+
+.show {
+  display: block;
+}
+
+.user-dropdown-content {
+  margin-top: -15px;
+  margin-left: -130px;
+}
+
+.title {
+  color: #24436c;
+}
+
+.add-new {
+  width: 140px;
+  color: #ffffff;
+  border-radius: 42px;
+  background-color: #537db4;
+  outline: none;
+  border: 1px solid #537db4;
+  font-size: 20px;
+  margin-left: 20px;
+  padding: 5px 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+table a,.add {
+  background-color: #b0d0de;
+  color: white;
+  border: none;
+  padding: 2px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.scrollable-x {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+/* .scrollable-x::-webkit-scrollbar {
+  display: none;
+} */
+.title {
+  font-size: 45px;
+  font-weight: bold;
+  color: #24436c;
+}
+.custom-card {
+  width: 70%;
+  border-color: #537db4;
+  background-color: #e0ecf6;
+}
+.custom-card input,
+.custom-card textarea {
+  outline: none;
+  border: 1px solid #1e2c3e;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+.custom-card label{
+  font-size: 24px;
+  color: #24436c;
+  font-weight: bold;
+}
+.form-btn{
+  width: 40%;
+  border: 1px solid #537db4;
+  border-radius: 50px;
+  background-color: #71bcdf;
+  font-size: 23px;
+  color: #f2f2f2;
+}
+.patient-detail-table  {
+  width: 20%;
+}
+.patient-detail-table  td {
+  width: 50%;
+}
+.message-card{
+  border: 1px solid #000000;
+  width: 450px;
+  padding: 10px;
+  margin: 5px 0px;
+}
+.message-card > div{
+  font-size: 21px;
+  font-weight: bold;
+}
+.message-card div:last-child{
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 60px;
+}

@@ -29,17 +29,26 @@
     <div class="container d-flex justify-content-center">
       <div class="login-card mt-5">
         <h1 class="text-center">Login</h1>
+        <h5 id="error" class="text-danger text-center mt-3"></h5>
         <div class="form-group">
           <label for="username" class="form-label">Username:</label>
           <br />
           <input type="text" placeholder="Username" id="username" />
-          <div id="usernameInvalid" class="text-danger" style="padding-left: 30px;"></div>
+          <div
+            id="usernameInvalid"
+            class="text-danger"
+            style="padding-left: 30px"
+          ></div>
         </div>
         <div class="form-group">
           <label for="password" class="form-label">Password:</label>
           <br />
           <input type="password" placeholder="Password" id="password" />
-          <div id="passwordInvalid" class="text-danger" style="padding-left: 30px;"></div>
+          <div
+            id="passwordInvalid"
+            class="text-danger"
+            style="padding-left: 30px"
+          ></div>
         </div>
         <div class="form-group confirm">
           <input type="submit" id="confirm" value="Confirm" />
@@ -47,7 +56,13 @@
       </div>
     </div>
     <script>
-      document.querySelector("#confirm").addEventListener("click",login);
+      document.querySelector("#confirm").addEventListener("click", login);
+      let link = location.href;
+      if (link.includes("message")) {
+        let message = link.split("=")[1].replaceAll("%20"," ");
+        document.querySelector("#error").innerHTML = message;
+        setTimeout(()=>document.querySelector("#error").innerHTML="",2000);
+      }
     </script>
   </body>
 </html>

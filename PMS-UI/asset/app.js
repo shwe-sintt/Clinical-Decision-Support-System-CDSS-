@@ -1,15 +1,14 @@
-let token = getCookie("token");
-if (!token) {
-  let link = location.href.split("/");
-  if (link[link.length - 1] !== "index.html") {
-    // alert("Please Login First!");
-    // location.replace("index.html");
+let staff = getCookie("staff");
+if (!staff) {
+  let link = location.href;
+  if (!link.includes("index.html")) {
+    location.replace("index.html?message=Please login frist!");
   }
 }
 
 function setCookie(name, value, days) {
   const date = new Date();
-  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
   const expires = `expires=${date.toUTCString()}`;
   document.cookie = `${name}=${value}; ${expires}; path=/`;
 }
@@ -26,20 +25,23 @@ function getCookie(name) {
 }
 
 const login = () => {
+  let confirm = document.querySelector("#confirm");
   let username = document.querySelector("#username").value;
   let password = document.querySelector("#password").value;
   let usernameInvalid = document.querySelector("#usernameInvalid");
   let passwordInvalid = document.querySelector("#passwordInvalid");
+  let error = document.querySelector("#error");
   usernameInvalid.innerText = "";
   passwordInvalid.innerText = "";
-
-  fetch("http://localhost:8000/api/auth/login", {
+  confirm.value = "Loading";
+  confirm.disabled = true;
+  fetch("http://localhost:8001/api/medicalStaff/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username,
+      username: username,
       password,
     }),
   })
@@ -47,34 +49,45 @@ const login = () => {
       return response.json();
     })
     .then((data) => {
-      if (data.status === 2) usernameInvalid.innerText = data.message;
-      if (data.status === 3) passwordInvalid.innerText = data.message;
-      if (data.status === 1) {
-        setCookie("token", data.token);
-        location.replace("view.html");
+      if (data.status === 200) {
+        setCookie("staff", data.user.staff_id);
+        location.replace("./view.html");
+      } else {
+        confirm.value = "Confirm";
+        confirm.disabled = false;
+        error.innerText = data.message;
+        setTimeout(() => (error.innerText = ""), 2000);
       }
+    })
+    .catch(() => {
+      confirm.value = "Confirm";
+      confirm.disabled = false;
+      error.innerText = "Invalid username or email!";
+      setTimeout(() => (error.innerText = ""), 2000);
     });
 };
 
+document.addEventListener("DOMContentLoaded", function () {
+  const dropbtns = document.querySelectorAll(".dropbtn");
+  const dropdownContents = document.querySelectorAll(".dropdown-content");
 
-document.addEventListener('DOMContentLoaded', function() {
-  const dropbtns = document.querySelectorAll('.dropbtn');
-  const dropdownContents = document.querySelectorAll('.dropdown-content');
-
-  dropbtns.forEach(function(dropbtn, index) {
-      dropbtn.addEventListener('click', function(event) {
-          event.preventDefault();
-          dropdownContents[index].classList.toggle('show');
-      });
+  dropbtns.forEach(function (dropbtn, index) {
+    dropbtn.addEventListener("click", function (event) {
+      event.preventDefault();
+      dropdownContents[index].classList.toggle("show");
+    });
   });
 
-  window.addEventListener('click', function(event) {
-      if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown')) {
-          dropdownContents.forEach(function(content) {
-              if (content.classList.contains('show')) {
-                  content.classList.remove('show');
-              }
-          });
-      }
+  window.addEventListener("click", function (event) {
+    if (
+      !event.target.matches(".dropbtn") &&
+      !event.target.closest(".dropdown")
+    ) {
+      dropdownContents.forEach(function (content) {
+        if (content.classList.contains("show")) {
+          content.classList.remove("show");
+        }
+      });
+    }
   });
 });
