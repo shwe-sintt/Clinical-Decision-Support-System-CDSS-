@@ -33,6 +33,7 @@ app.use("/api/patient", patientRouter);
 app.use("/api/patientMedication", patientMedicationRouter);
 app.use("/api/report", reportRouter);
 app.use("/api/patientAllergy", patientAllergyRouter);
+app.use("/api/review", reviewRouter);
  
 const PORT = process.env.PORT || 8001;
 
