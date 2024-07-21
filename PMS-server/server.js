@@ -36,7 +36,10 @@ app.use("/api/patientAllergy", patientAllergyRouter);
 app.use("/api/review", reviewRouter);
  
 const PORT = process.env.PORT || 8001;
-
+// const ip = '10.175.4.73';
+// app.listen(PORT, ip , () => {
+//     console.log(`Server is running at [http://$%7bip%7d:$%7bport%7d%60]http://${ip}:${PORT}`);
+// });
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
 });
